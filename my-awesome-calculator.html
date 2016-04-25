@@ -1,0 +1,325 @@
+<!Doctype html>
+
+<html lang="en">
+
+	<meta charset="UTF-8">
+
+	<meta http-equiv="X-AU-Compatible" content="chrome=1">
+
+	<meta name="viewport" content="width = device-width, initial-scale = 1">
+
+	<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+<!-- 
+	<link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'> -->
+
+<!-- Optional theme -->
+	<link rel="stylesheet" href="/css/bootstrap-theme.min.css">
+
+	<title>Awesum Plus</title>
+
+	
+
+	
+
+<head>
+
+	<style>
+
+
+			.page-header {
+
+				font-family: Gabriola , cursive;
+				font-size: 30px;
+
+			}
+
+			
+
+	</style>
+
+
+
+</head>
+
+
+
+
+<body>
+
+	<div class="page-header"><h3>AwesumPlus</h3></div>
+
+
+	<form name="frm">
+	<input type="text" value="" name="displayText" id="displayText"/>
+	<input name="result">
+	<br />
+	<br />
+	<input type="button" name="1" value="1" onclick="run(1)">
+	<input type="button" name="2" value="2" onclick="run(2)">
+	<input type="button" name="3" value="3" onclick="run(3)">
+	<input type="button" name="4" value="4" onclick="run(4)">
+	<input type="button" name="5" value="5" onclick="run(5)">
+	<input type="button" name="6" value="6" onclick="run(6)">
+	<input type="button" name="7" value="7" onclick="run(7)">
+	<input type="button" name="8" value="8" onclick="run(8)">
+	<input type="button" name="9" value="9" onclick="run(9)">
+	<input type="button" name="0" value="0" onclick="run(0)">
+	
+	<input type="button" name="clear" value="c" onclick="runcl()">
+	<input type="button" name="allclear" value="ac" onclick="runallcl()">
+
+	<input type="button" name="plus" value="+" onclick="doOperation('+')">
+	<input type="button" name="minus" value="-" onclick="doOperation('-')">
+	<input type="button" name="times" value="*" onclick="doOperation('*')">
+	<input type="button" name="divide" value="/" onclick="doOperation('/')">
+
+	<input type="button" name="calc" value="=" onclick="equals()">
+
+	</form>
+
+
+
+	<script language="javascript" type="text/javascript">
+
+	var term1 = null;
+	var term2 = null;
+	var operation = null;
+
+	function run(num){
+		document.frm.result.value += num;
+		document.frm.displayText.value += num;
+	}
+
+	function doOperation(op){
+		document.frm.displayText.value += ' '+op+' ';
+
+		// check if this is the first operation
+		if(operation === null){
+			term1 =  document.frm.result.value * 1;
+		}
+		else{
+			term2 =  document.frm.result.value * 1;
+			// do the maths
+			term1 = doMaths(term1, operation, term2);
+			term2 = 0;
+		}
+
+		operation = op;	// save the current operation
+		document.frm.result.value = '';	// clear the screen for next number
+
+	}
+
+	function doMaths(x, op, y){
+		answer = 0;
+		if(op == '+'){
+			answer = term1 + term2;
+
+		}
+
+		else if(op == '-'){
+			answer = term1 - term2;
+
+
+		}
+
+		else if(op == '*'){
+			answer = term1 * term2;
+
+
+		}
+
+		else if(op =='/'){
+			answer = term1 / term2;
+
+
+		}
+
+		return answer;
+	}
+
+	function equals(){
+		term2 =  document.frm.result.value * 1;
+			// do the maths
+			term2 = doMaths(term1, operation, term2);
+			term1 = 0;
+			operation = null;
+		document.frm.result.value = term2;
+	}
+
+//	function evalu()
+//		{
+//			var evalo = eval(document.frm.result.value)
+//			document.frm.result.value = evalo;
+
+
+//		}
+
+
+	</script>
+
+	<noscript>
+		<h3>Running "AwesumPlus" will require Javasript</h3>
+	</noscript>
+
+
+
+	<script src="/js/jquery.min.js"></script>
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="/js/bootstrap.min.js"></script>
+
+	<script src="/js/main.js"></script>
+
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+<!-- included styling in <head>
+
+	<link rel="stylesheet" href="style.css" type="text/css">  
+
+
+
+
+<!-- jquery [not working; fix later!!!]
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
+-->
+
+<!-- (link images later!!!)
+
+<div id="theCarousel" class="carousel slide" data-ride="carousel">
+
+	<ol class="carousel-indicators">
+	
+		<li data-target="#theCarousel" data-slide-to="0" class="active"></li>
+		<li data-target="#theCarousel" data-slide-to="1"></li>
+		<li data-target="#theCarousel" data-slide-to="2"></li>
+
+	</ol>
+
+	<div class="carousel-inner">
+		<div class="item active">
+		<div class="slide1"></div>
+		<div class="carousel-caption">
+			<h1>A Touch of Amazing</h1>
+			  <p><q>the golden touch</q></p>
+			  <p><a href="#" class="btn btn-warning btn-sm">Lace Up</a></p>
+		</div>
+		</div>
+
+
+		<div class="item">
+		<div class="slide2"></div>
+		<div class="carousel-caption">
+			<h1>Goodie Gumdrops</h1>
+			  <p><q>jaw dropping, baby</q></p>
+			  <p><a href="#" class="btn btn-warning btn-sm">Let's Go!</a></p>
+		</div>
+		</div>
+
+	
+		<div class="item">
+		<div class="slide3"></div>
+		<div class="carousel-caption">
+			<h1>World My Oyster</h1>
+			  <p><q>to the world</q></p>
+			  <p><a href="#" class="btn btn-warning btn-sm">Stay Strapped</a></p>
+		</div>
+		</div>
+	</div>
+
+	<a class="left-carousel-control" href="#theCarousel" data-slide="prev">
+	<span class="glyphicon glyphicon-chevron-left"></span>
+
+	<a class="right-carousel-control" href="#theCarousel" data-slide="next">
+	<span class="glyphicon glyphicon-chevron-right"></span>
+
+	(link images later!!!) -->
+
+
+<!-- (NB!!! An eg. of setting up bootstrap columns: under div-class row repeat column declare screen size for each column followed by column-heading optional.)
+
+	<div class="row">
+		
+		<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+		<h4>Column Heading</h4>
+
+	</div>
+
+	(to debug a spacing error, insert div right before the div where the error occurs: 
+	<div class="clearfix visible-sm"></div>
+	[sm - screen size of when the error occurs])
+
+            "columns" - TEST END HERE-->
+
+
+ <!--  (BOOTSTRAP BUTTONS VERSION BELOW!)
+
+	<div class="jumbotron">
+
+	
+
+			<input readonly="readonly" type="text" value="" name="display-text" id="display-text"/>
+
+			<br/><br/>
+
+		<div class="keys">
+			<button type="button" value="Info" class="btn btn-info" onclick="num1();">1</button>
+				
+			<button type="button" value="Info" class="btn btn-info" onclick="num2();">2</button>
+
+			<button type="button" value="Info" class="btn btn-info" onclick="num3();">3</button>
+
+			<button type="button" value="Info" class="btn btn-info" onclick="num4();">4</button>
+				
+			<button type="button" value="Info" class="btn btn-info" onclick="num5();">5</button>
+
+			<button type="button" value="Info" class="btn btn-info" onclick="num6();">6</button>
+
+			<button type="button" value="Info" class="btn btn-info" onclick="num7();">7</button>
+
+			<button type="button" value="Info" class="btn btn-info" onclick="num8();">8</button>
+				
+			<button type="button" value="Info" class="btn btn-info" onclick="num9();">9</button>
+
+			<button type="button" value="Info" class="btn btn-info" onclick="num0();">0</button>
+
+			<button type="button" value="Info" class="btn btn-danger" onclick="pressButton('');">c</button>
+
+			<button type="button" value="Info" class="btn btn-danger" onclick="pressButton('');">ac</button>
+
+			<button type="button" value="Info" class="btn btn-default" onclick="pressButton('+');">+</button>
+
+			<button type="button" value="Info" class="btn btn-default" onclick="pressButton('-');">-</button>
+
+			<button type="button" value="Info" class="btn btn-default" onclick="pressButton('*');">*</button>
+
+			<button type="button" value="Info" class="btn btn-default" onclick="pressButton('/');">/</button>
+
+			<button type="button" value="Info" class="btn btn-success" onclick="pressButton('');">=</button>
+
+		</div>
+
+		(BOOTSTRAP VERION BUTTONS ABOVE)   -->
+
+
+
+
+		<!-- (bootstrap test)
+
+<button class="btn btn-success" onclick="$[this].hide();"> Click Here </button>
+
+-->
